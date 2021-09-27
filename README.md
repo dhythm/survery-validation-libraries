@@ -31,10 +31,11 @@ yarn add @mui/icons-material
 
 # Zod vs tiny-schema-validator
 
-## validator
+## validator (type)
 
 | type       | zod            | tiny-schema-validator |
 | :--------- | :------------- | :-------------------- |
+| Constants  | literal()      | constant()            |
 | Primitives | string()       | string()              |
 |            | number()       | number()              |
 |            | bigint()       |                       |
@@ -46,8 +47,6 @@ yarn add @mui/icons-material
 |            | any()          |                       |
 |            | unknown()      |                       |
 |            | never()        |                       |
-| Constants  | literal()      |                       |
-|            |                | constant()            |
 | Others     | enum()         |                       |
 |            | optional()     |                       |
 |            | nullable()     |                       |
@@ -64,3 +63,42 @@ yarn add @mui/icons-material
 |            | instanceof()   |                       |
 |            | function()     |                       |
 |            | preprocess()   |                       |
+
+## Literals / Constants
+
+|      | zod                           | tiny-schema-validator         |
+| :--- | :---------------------------- | :---------------------------- |
+| type | `string \| number \| boolean` | `string \| number \| boolean` |
+
+## Strings
+
+|                | zod        | tiny-schema-validator |
+| :------------- | :--------- | :-------------------- |
+| validation     | max()      | maxLength             |
+|                | min()      | minLength             |
+|                | length()   |                       |
+|                | email()    |                       |
+|                | url()      |                       |
+|                | uuid()     |                       |
+|                | cuid()     |                       |
+|                | regex()    | pattern               |
+|                | nonempty() |                       |
+|                | optional() | optional              |
+| custom message | yes        | yes                   |
+
+## Numbers
+
+|                | zod           | tiny-schema-validator           |
+| :------------- | :------------ | :------------------------------ |
+| validation     | gt()          |                                 |
+|                | gte()         | min                             |
+|                | lt()          |                                 |
+|                | lte()         | max                             |
+|                | int()         |                                 |
+|                | positive()    |                                 |
+|                | nonnegative() |                                 |
+|                | negative()    |                                 |
+|                | nonpositive() |                                 |
+|                | multipleOf()  |                                 |
+|                |               | is ('integer', 'float', 'both') |
+| custom message | yes           | yes                             |
