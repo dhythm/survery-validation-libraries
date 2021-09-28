@@ -134,6 +134,16 @@ const schema = optionalString.unwrap();
 type A = z.infer<typeof schema>; // string
 ```
 
+Optionals should work for the following cases,
+
+```ts
+const schemaA = z.array(z.string().optional());
+type A = z.infer<typeof A>; // (string | undefined)[]
+
+const schemaB = z.optional(z.array(z.string()));
+type B = z.infer<typeof B>; // string[] | undefined
+```
+
 ### tiny-schema-validator
 
 `string`, `number`, `boolean`, `list`, `listof`, `record` and `recordof` can be optional by passing the config.
