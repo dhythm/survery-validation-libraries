@@ -182,11 +182,31 @@ _.list([_.number(), _.number()], { optional: true }); // THIS WORKS
 
 ## schema
 
-## tiny-schema-validator
+### Zod
 
-|          |                                                                      |
-| :------- | :------------------------------------------------------------------- |
-| is       | checks if the data is valid                                          |
-| validate | returns errors if data is invalid (not throw)                        |
-| produce  | throws an error when the data is invalid. otherwise, it returns data |
-| embed    | embeds the schema in other schemas                                   |
+| method         |                                                                                          |
+| :------------- | :--------------------------------------------------------------------------------------- |
+| parse          | throws an error when the data is invalid.<br /> otherwise, it returns data.              |
+| parseAsync     | Similar to `parse`. use for asynchronous refinements or transforms.                      |
+| safeParse      | checks if the data is valid and then returns `{ success, data }` or `{ success, error }` |
+| safeParseAsync | Similar to `safeParse`. use for asynchronous refinements or transforms.                  |
+| refine         | Provide custom validation logic.                                                         |
+| superRefine    | See: https://github.com/colinhacks/zod#superrefine                                       |
+| transform      | Transform data after parsing.                                                            |
+| default        | Set "default values".                                                                    |
+| optional       | Returns an optional version of a schema.                                                 |
+| nullable       | Returns an nullable version of a schema.                                                 |
+| nullish        | Returns an "nullish" (`null` or `undefined`) version of a schema.                        |
+| array          | Returns an array schema for the given type.                                              |
+| promise        | Makes schema promise types                                                               |
+| or             | Makes schema union types                                                                 |
+| and            | Create intersection types                                                                |
+
+### tiny-schema-validator
+
+| method   |                                                                             |
+| :------- | :-------------------------------------------------------------------------- |
+| is       | checks if the data is valid and then returns boolean.                       |
+| validate | returns errors if data is invalid (not throw).                              |
+| produce  | throws an error when the data is invalid.<br /> otherwise, it returns data. |
+| embed    | embeds the schema in other schemas                                          |
