@@ -64,13 +64,13 @@ yarn add @mui/icons-material
 |            | function()     |                       |
 |            | preprocess()   |                       |
 
-## Literals / Constants
+### Literals / Constants
 
 |      | zod                           | tiny-schema-validator         |
 | :--- | :---------------------------- | :---------------------------- |
 | type | `string \| number \| boolean` | `string \| number \| boolean` |
 
-## Strings
+### Strings
 
 |                | zod        | tiny-schema-validator |
 | :------------- | :--------- | :-------------------- |
@@ -86,7 +86,7 @@ yarn add @mui/icons-material
 |                | optional() | optional              |
 | custom message | yes        | yes                   |
 
-## Numbers
+### Numbers
 
 |                | zod           | tiny-schema-validator      |
 | :------------- | :------------ | :------------------------- |
@@ -103,15 +103,15 @@ yarn add @mui/icons-material
 |                | multipleOf()  |                            |
 | custom message | yes           | yes                        |
 
-## Booleans
+### Booleans
 
 |                | zod | tiny-schema-validator |
 | :------------- | :-- | :-------------------- |
 | custom message | yes | No                    |
 
-## Optionals
+### Optionals
 
-### zod
+#### zod
 
 `optional` can be used for the following two patterns,
 
@@ -144,7 +144,7 @@ const schemaB = z.optional(z.array(z.string()));
 type B = z.infer<typeof B>; // string[] | undefined
 ```
 
-### tiny-schema-validator
+#### tiny-schema-validator
 
 `string`, `number`, `boolean`, `list`, `listof`, `record` and `recordof` can be optional by passing the config.
 Also custom validators can be used as,
@@ -179,3 +179,14 @@ _.list([_.number({ optional: true /* THIS IS IGNORED */ }), _.number()]);
 _.recordof(_.string(), { optional: true }); // THIS WORKS
 _.list([_.number(), _.number()], { optional: true }); // THIS WORKS
 ```
+
+## schema
+
+## tiny-schema-validator
+
+|          |                                                                      |
+| :------- | :------------------------------------------------------------------- |
+| is       | checks if the data is valid                                          |
+| validate | returns errors if data is invalid (not throw)                        |
+| produce  | throws an error when the data is invalid. otherwise, it returns data |
+| embed    | embeds the schema in other schemas                                   |

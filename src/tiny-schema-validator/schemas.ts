@@ -25,5 +25,10 @@ const User = createSchema({
     _.constant("canceled")
   ),
 });
-
 export type UserType = ReturnType<typeof User.produce>;
+
+const UserGroup = createSchema({
+  users: _.listof(User.embed()),
+});
+
+export type UserGroupType = ReturnType<typeof UserGroup.produce>;
